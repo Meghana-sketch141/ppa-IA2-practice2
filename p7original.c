@@ -1,32 +1,32 @@
+
 #include<stdio.h>
-struct _complex{
-  int real,imaginary;
+struct _triangle
+{
+float base,altitude,area;
 };
-typedef struct _complex Complex;
-Complex input_complex()
+typedef struct _triangle Triangle;
+Triangle input_triangle()
 {
-  Complex k;
-  printf("enter the real and imag\n");
-  scanf("%d %d",&k.real,&k.imaginary);
-  return k;
+  Triangle t;
+  printf("enter the base lingth,altitude length\n");
+  scanf("%f %f",&t.base,&t.altitude);
+  return t;
 }
-Complex add(Complex a,Complex b)
-{ 
-    Complex z;
-    z.real=a.real+b.real;
-    z.imaginary=a.imaginary+b.imaginary;
-    return z;
-}
-void output(Complex a,Complex b,Complex c)
+void find_area(Triangle *t)
 {
-  printf("%d + %di + %d + %di is %d + %di\n",a.real,a.imaginary,b.real,b.imaginary,c.real,c.imaginary);
+  t->area=0.5 * (t->base * t->altitude);
+}
+void output(Triangle t)
+{
+  printf("the area of the triangle with base:%f and altitude:%f is %f\n",t.base,t.altitude,t.area);
 }
 int main()
 {
-  struct _complex a,b,c;
-  a=input_complex();
-  b=input_complex();
-  c=add(a,b);
-  output(a,b,c);
+  Triangle t;
+  t= input_triangle();
+  find_area(&t);
+  output(t);
   return 0;
 }
+
+
